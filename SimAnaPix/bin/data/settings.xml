@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<group />
+<informational_GUI>
+	<Border_width>1</Border_width>
+</informational_GUI>
+<sample-parameters>
+	<Sampleammount_ABS>1000</Sampleammount_ABS>
+	<Sampleammount_REL>10</Sampleammount_REL>
+	<Superpixel_Res_>100</Superpixel_Res_>
+	<S_Pix_width>1</S_Pix_width>
+	<S_Pix_height>1</S_Pix_height>
+	<Border_width>0</Border_width>
+	<Border_height>0</Border_height>
+</sample-parameters>
