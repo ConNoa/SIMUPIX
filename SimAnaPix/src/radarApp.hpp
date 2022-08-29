@@ -10,7 +10,8 @@ public:
 	void update();
 	void draw();
 
+	cv::Mat ofImgToCVMat(ofImage const &img_in);
 
-	shared_ptr<State> shrd;
+		shared_ptr<State> shrd;
 };
 

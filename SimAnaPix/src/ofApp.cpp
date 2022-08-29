@@ -5,8 +5,8 @@ void ofApp::setup(){
 
 	pnt[0].x = (float)-100;
 	pnt[0].y = (float)-500;
-	pnt[2].x = (float)orig_img.getWidth();
-	pnt[2].y = (float)orig_img.getHeight();
+	pnt[2].x = (float)preview_tex_img.getWidth();
+	pnt[2].y = (float)preview_tex_img.getHeight();
 	draw_bnds.set(pnt[0], pnt[2]);
 	pnt[1].x = shrd->mouse_x_dr-shrd->PR_pos_x_;
 	pnt[1].y = shrd->mouse_y_dr-shrd->PR_pos_y_;
@@ -33,16 +33,16 @@ void ofApp::setup(){
 //	roi_1.update();
 	//test_img.update();
 	ofEnableAlphaBlending();
-	ofLoadImage(orig_img, shrd->image_files[0]);
-	orig_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	ofLoadImage(preview_tex_img, shrd->image_files[0]);
+	preview_tex_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 }
 
 void ofApp::update()
 {
 	if(shrd->gui_changed == true){
 
-		ofLoadImage(orig_img, shrd->image_files[shrd->dropdownvalue]);
-		orig_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+		ofLoadImage(preview_tex_img, shrd->image_files[shrd->dropdownvalue]);
+		preview_tex_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 
 		shrd->gui_changed = false;
 	}
@@ -66,14 +66,14 @@ void ofApp::draw()
 		int o_x = -1 * (shrd->mouse_x_dr - shrd->PR_pos_x_ - shrd->prevrw/2) * shrd->truth_scalefac ;
 		int o_y = -1 * (shrd->mouse_y_dr - shrd->PR_pos_y_ - shrd->prevrh/2) * shrd->truth_scalefac ;
 		
-		o_x = o_x + (((shrd->PR_max_w_ - orig_img.getWidth() / shrd->scalefac) / 2) * shrd->truth_scalefac);
-		o_y = o_y + (((shrd->PR_max_h_ - orig_img.getHeight() / shrd->scalefac) / 2) * shrd->truth_scalefac);
+		o_x = o_x + (((shrd->PR_max_w_ - preview_tex_img.getWidth() / shrd->scalefac) / 2) * shrd->truth_scalefac);
+		o_y = o_y + (((shrd->PR_max_h_ - preview_tex_img.getHeight() / shrd->scalefac) / 2) * shrd->truth_scalefac);
 		o_x = o_x - mD_x;
 		o_y = o_y - mD_y;
-		orig_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+		preview_tex_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 		
-		orig_img.draw(o_x, o_y, orig_img.getWidth() * shrd->m_zoom_fac, orig_img.getHeight() * shrd->m_zoom_fac);
-		///cout<< orig_img.getWidth()<< endl;
+		preview_tex_img.draw(o_x, o_y, preview_tex_img.getWidth() * shrd->m_zoom_fac, preview_tex_img.getHeight() * shrd->m_zoom_fac);
+		///cout<< preview_tex_img.getWidth()<< endl;
 
 		ofDrawBitmapString(ofToString(ofGetFrameRate()), 250, 20);
 		ofDrawBitmapString(ofToString(shrd->mouse_x), 250, 40);
