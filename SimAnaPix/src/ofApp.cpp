@@ -7,9 +7,9 @@ void ofApp::setup(){
 	pnt[0].y = (float)-500;
 	pnt[2].x = (float)preview_tex_img.getWidth();
 	pnt[2].y = (float)preview_tex_img.getHeight();
-	draw_bnds.set(pnt[0], pnt[2]);
-	pnt[1].x = shrd->mouse_x_dr-shrd->PR_pos_x_;
-	pnt[1].y = shrd->mouse_y_dr-shrd->PR_pos_y_;
+//	draw_bnds.set(pnt[0], pnt[2]);
+	pnt[1].x = shrd->mouse_x_dr-shrd->IP_pos_x;
+	pnt[1].y = shrd->mouse_y_dr-shrd->IP_pos_y;
 	pnt[3].x = (float)ofGetWindowWidth();
 	pnt[3].y = (float)ofGetWindowHeight();
 	//subsec_bnds.set(pnt[1], pnt[3]);
@@ -46,16 +46,9 @@ void ofApp::update()
 
 		shrd->gui_changed = false;
 	}
-
 	
-	/*
-	if(filter_exists && !filter_loaded)
-	{
-	actual_filterdata	= cv::Mat(superpixel_width, superpixel_height, CV_8UC1);
-	filter_loaded = true;
-	setFilterToPixel();
-	}
-*/
+
+
 }
 
 void ofApp::draw()
@@ -63,11 +56,11 @@ void ofApp::draw()
 
 		ofSetColor(255);
 
-		int o_x = -1 * (shrd->mouse_x_dr - shrd->PR_pos_x_ - shrd->prevrw/2) * shrd->truth_scalefac ;
-		int o_y = -1 * (shrd->mouse_y_dr - shrd->PR_pos_y_ - shrd->prevrh/2) * shrd->truth_scalefac ;
+		int o_x = -1 * (shrd->mouse_x_dr - shrd->IP_pos_x - shrd->prevrw/2) * shrd->truth_scalefac ;
+		int o_y = -1 * (shrd->mouse_y_dr - shrd->IP_pos_y - shrd->prevrh/2) * shrd->truth_scalefac ;
 		
-		o_x = o_x + (((shrd->PR_max_w_ - preview_tex_img.getWidth() / shrd->scalefac) / 2) * shrd->truth_scalefac);
-		o_y = o_y + (((shrd->PR_max_h_ - preview_tex_img.getHeight() / shrd->scalefac) / 2) * shrd->truth_scalefac);
+		o_x = o_x + (((shrd->IP_max_w - preview_tex_img.getWidth() / shrd->scalefac) / 2) * shrd->truth_scalefac);
+		o_y = o_y + (((shrd->IP_max_h - preview_tex_img.getHeight() / shrd->scalefac) / 2) * shrd->truth_scalefac);
 		o_x = o_x - mD_x;
 		o_y = o_y - mD_y;
 		preview_tex_img.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);

@@ -15,10 +15,13 @@ void GuiApp::setup(){
     shrd->height_roi = 10;
 
     read_Corpus();
-    ofLoadImage(shrd->prev_img, shrd->image_files[0]);
+    ofLoadImage(actualImg, shrd->image_files[0]);
     setup_gui();
     setup_filter();
 
+    //ImgPreview createPrevImg(ofTexture const& actualImg, int IP_pos_x_, int IP_pos_y_, int IP_max_h_, int IP_max_w_);
+   // img_prev = createPrevImg;
+    
     setup_imgPreview();
 
     if (!(shrd->bHide))draw_gui();
@@ -108,13 +111,14 @@ void GuiApp::setup_gui()
 
     shrd->m_sampleamm_abs.set("Sampleammount ABS", 1000, 10, 200000);
     shrd->m_sampleamm_rel.set("Sampleammount REL", 10, 0, 100);
-    shrd->m_superpix_res.set("Superpixel Res.", 100, 0, 100);
+    shrd->m_superpix_res.set("Superpixel Res.", 1, 0, 1);
     shrd->superpixel_width.set("S.Pix width", 10, 1, 19);
     shrd->superpixel_height.set("S.Pix height", 10, 1, 19);
     shrd->cosx_e.set("Cosx^", 1, 0, 15);
     shrd->cosy_e.set("Cosy^", 1, 0, 15);
     shrd->border_width.set("Border width", 0, 0, 5);
     shrd->border_height.set("Border height", 0, 0, 5);
+    shrd->switch_screen1.set(" Only sampled informations ", true);
 
     shrd->m_gui = new ofxDatGui();
     shrd->m_gui->addLabel("Sample Parameters");
@@ -137,19 +141,32 @@ void GuiApp::setup_gui()
     shrd->components.push_back(shrd->dropdown);
 
     shrd->m_zoom_fac.set("Zoom Factor Main", 1, 1, 20);
+
     shrd->zoom_gui = new ofxDatGui();
     shrd->zoom_gui->addLabel("additional Parameters");
     shrd->zoom_gui->addSlider(shrd->m_zoom_fac);
     shrd->zoom_gui->setPosition(315, 950);
     shrd->zoom_gui->onSliderEvent(this, &GuiApp::onSliderEvent);
 
+    shrd->sample_toggle = new ofxDatGuiToggle("ToggleLabel");
+    shrd->sample_toggle->setPosition(315, 1020);
+    shrd->zoom_gui->onToggleEvent(this, &GuiApp::onToggleEvent);
 }
+
+void GuiApp::onToggleEvent(ofxDatGuiToggleEvent e)
+{
+    cout << e.target->getLabel() << " checked = " << e.checked << endl;
+    shrd->switch_screen1 = e.checked;
+}
+
 
 void GuiApp::onSliderEvent(ofxDatGuiSliderEvent e)
 {
     cout << e.target->getName() << " : " << e.value << endl;
+    shrd->prev_mode_bypass = shrd->m_superpix_res;
     compute_alphfilter(shrd->superpixel_width, shrd->superpixel_height, shrd->cosx_e, shrd->cosy_e);
 }
+
 
 void GuiApp::onDropdownEvent(ofxDatGuiDropdownEvent e)
 {
@@ -170,7 +187,7 @@ void GuiApp::load_selImg(ofxDatGuiDropdownEvent in_)
 {
     cout << "onDropdownEvent: " << in_.child << endl;
 
-    ofLoadImage(shrd->prev_img, shrd->image_files[in_.child]);
+    ofLoadImage(actualImg, shrd->image_files[in_.child]);
 }
 
 void GuiApp::draw_filterPreview()
@@ -228,12 +245,6 @@ void GuiApp::setup_filter()
 
 void GuiApp::setup_imgPreview()
 {
-
-    shrd->PR_pos_x_ = 300;
-    shrd->PR_pos_y_ = 600;
-    shrd->PR_max_w_ = 400;
-    shrd->PR_max_h_ = 300;
-
     shrd->pnt[0].x = 0;
     shrd->pnt[0].y = 0;
     shrd->pnt[1].x = (float)(ofGetWidth());
@@ -244,8 +255,8 @@ void GuiApp::setup_imgPreview()
     shrd->pnt[3].y = (float)(ofGetHeight());
     shrd->draw_bnds.set(shrd->pnt[0], shrd->pnt[2]);
 
-    shrd->mouse_x_dr = shrd->PR_pos_x_ + shrd->PR_max_w_ / 2;
-    shrd->mouse_y_dr = shrd->PR_pos_y_ + shrd->PR_max_h_ / 2;
+    shrd->mouse_x_dr = IP_pos_x_ + IP_max_w_ / 2;
+    shrd->mouse_y_dr = IP_pos_y_ + IP_max_h_ / 2;
 
     shrd->dragOffset_x = 0;
     shrd->dragOffset_y = 0;
@@ -256,16 +267,20 @@ void GuiApp::draw_imgPreview(){
     ofBeginShape();
     ofFill();
     ofSetColor(0);
-    ofDrawRectangle(shrd->PR_pos_x_ + shrd->PR_max_w_ / 2, shrd->PR_pos_y_ + shrd->PR_max_h_ / 2, shrd->PR_max_w_, shrd->PR_max_h_);
+    ofDrawRectangle(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, IP_max_w_, IP_max_h_);
     ofEndShape();
     ofSetColor(255);
-    shrd->scalefac = max((shrd->prev_img.getWidth() / shrd->PR_max_w_), (shrd->prev_img.getHeight() / shrd->PR_max_h_));
+  //  shrd->scalefac = max((actualImg.getWidth() / IP_max_w_), (actualImg.getHeight() / IP_max_h_));
+  //---------
+    shrd->scalefac = 2; // DEbugtest
+  //---------  //---------
+
     shrd->truth_scalefac = shrd->scalefac * (float)shrd->m_zoom_fac;
-    shrd->prev_img.draw(shrd->PR_pos_x_ + shrd->PR_max_w_ / 2, shrd->PR_pos_y_ + shrd->PR_max_h_ / 2, shrd->prev_img.getWidth() / shrd->scalefac, shrd->prev_img.getHeight() / shrd->scalefac);
+    actualImg.draw(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, actualImg.getWidth() / shrd->scalefac, actualImg.getHeight() / shrd->scalefac);
     ofBeginShape();
     ofNoFill();
     ofSetColor(50, 205, 50);
-    ofDrawRectangle(shrd->PR_pos_x_ + shrd->PR_max_w_ / 2, shrd->PR_pos_y_ + shrd->PR_max_h_ / 2, shrd->PR_max_w_, shrd->PR_max_h_);
+    ofDrawRectangle(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, IP_max_w_, IP_max_h_);
     ofEndShape();
     ofSetColor(255);
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -279,8 +294,8 @@ void GuiApp::draw_Preview_Rect()
     ofBeginShape();
     ofNoFill();
     ofSetColor(255, 0, 255);
-    shrd->prevrw = shrd->main_window_w / shrd->prev_img.getWidth() * (shrd->prev_img.getWidth() / shrd->truth_scalefac);
-    shrd->prevrh = shrd->main_window_h / shrd->prev_img.getHeight() * (shrd->prev_img.getHeight() / shrd->truth_scalefac);
+    shrd->prevrw = shrd->main_window_w / actualImg.getWidth() * (actualImg.getWidth() / shrd->truth_scalefac);
+    shrd->prevrh = shrd->main_window_h / actualImg.getHeight() * (actualImg.getHeight() / shrd->truth_scalefac);
     shrd->prevrx = shrd->mouse_x_dr + shrd->dragOffset_x / shrd->truth_scalefac;
     shrd->prevry = shrd->mouse_y_dr + shrd->dragOffset_y / shrd->truth_scalefac;
 
@@ -303,18 +318,18 @@ void GuiApp::draw_gui()
 
 void GuiApp::mouseDragged(int x, int y, int button)
 {
-    if ((shrd->last_click_x > shrd->PR_pos_x_) && (shrd->last_click_x < (shrd->PR_pos_x_ + shrd->PR_max_w_)) && (shrd->last_click_y > shrd->PR_pos_y_) && (shrd->last_click_y < (shrd->PR_pos_y_ + shrd->PR_max_h_)))
+    if ((shrd->last_click_x > IP_pos_x_) && (shrd->last_click_x < (IP_pos_x_ + IP_max_w_)) && (shrd->last_click_y > IP_pos_y_) && (shrd->last_click_y < (IP_pos_y_ + IP_max_h_)))
     {
         // cout << "mouse-dr   x:" << x << " y:" << y << " button:" << button << endl;
-        if ((x > (shrd->PR_pos_x_ + shrd->prevrw / 2)) && (x < (shrd->PR_pos_x_ + shrd->PR_max_w_ - shrd->prevrw / 2)))
+        if ((x > (IP_pos_x_ + shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)))
         {
             shrd->mouse_x_dr = x;
-            if ((y >= (shrd->PR_pos_y_ + shrd->prevrh / 2)) && (y < (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2)))
+            if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
             {
                 shrd->mouse_y_dr = y;
             }
         }
-        else if ((y >= (shrd->PR_pos_y_ + shrd->prevrh / 2)) && (y < (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2)))
+        else if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
         {
             shrd->mouse_y_dr = y;
         }
@@ -330,39 +345,39 @@ void GuiApp::mousePressed(int x, int y, int button)
     shrd->last_click_x = x;
     shrd->last_click_y = y;
 
-    if ((shrd->last_click_x > shrd->PR_pos_x_) && (shrd->last_click_x < (shrd->PR_pos_x_ + shrd->PR_max_w_)) && (shrd->last_click_y > shrd->PR_pos_y_) && (shrd->last_click_y < (shrd->PR_pos_y_ + shrd->PR_max_h_)))
+    if ((shrd->last_click_x > IP_pos_x_) && (shrd->last_click_x < (IP_pos_x_ + IP_max_w_)) && (shrd->last_click_y > IP_pos_y_) && (shrd->last_click_y < (IP_pos_y_ + IP_max_h_)))
     {
 
         cout << "mouse-pr   x:" << x << " y:" << y << " button:" << button << endl;
-        if ((x > (shrd->PR_pos_x_ + shrd->prevrw / 2)) && (x < (shrd->PR_pos_x_ + shrd->PR_max_w_ - shrd->prevrw / 2)))
+        if ((x > (IP_pos_x_ + shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)))
         {
             shrd->mouse_x_dr = x;
-            if ((y >= (shrd->PR_pos_y_ + shrd->prevrh / 2)) && (y < (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2)))
+            if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
             {
                 shrd->mouse_y_dr = y;
             }
         }
-        else if ((y >= (shrd->PR_pos_y_ + shrd->prevrh / 2)) && (y < (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2)))
+        else if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
         {
             shrd->mouse_y_dr = y;
         }
 
-        if ((y >= (shrd->PR_pos_y_)) && (y < (shrd->PR_pos_y_ + shrd->prevrh / 2)))
+        if ((y >= (IP_pos_y_)) && (y < (IP_pos_y_ + shrd->prevrh / 2)))
         {
-            shrd->mouse_y_dr = (shrd->PR_pos_y_ + shrd->prevrh / 2);
+            shrd->mouse_y_dr = (IP_pos_y_ + shrd->prevrh / 2);
         }
-        else if ((y >= (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2)) && (y < (shrd->PR_pos_y_ + shrd->PR_max_h_)))
+        else if ((y >= (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_)))
         {
-            shrd->mouse_y_dr = (shrd->PR_pos_y_ + shrd->PR_max_h_ - shrd->prevrh / 2);
+            shrd->mouse_y_dr = (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2);
         }
 
-        if ((x >= (shrd->PR_pos_x_)) && (x < (shrd->PR_pos_x_ + shrd->prevrw / 2)))
+        if ((x >= (IP_pos_x_)) && (x < (IP_pos_x_ + shrd->prevrw / 2)))
         {
-            shrd->mouse_x_dr = (shrd->PR_pos_x_ + shrd->prevrw / 2);
+            shrd->mouse_x_dr = (IP_pos_x_ + shrd->prevrw / 2);
         }
-        else if ((x >= (shrd->PR_pos_x_ + shrd->PR_max_w_ - shrd->prevrw / 2)) && (x < (shrd->PR_pos_x_ + shrd->PR_max_w_)))
+        else if ((x >= (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_)))
         {
-            shrd->mouse_x_dr = (shrd->PR_pos_x_ + shrd->PR_max_w_ - shrd->prevrw / 2);
+            shrd->mouse_x_dr = (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2);
         }
     }
 
@@ -385,6 +400,7 @@ void GuiApp::mouseMoved(int x, int y)
 void GuiApp::mouseReleased(int x, int y, int button)
 {
     std::cout << "mouse released" << std::endl;
+    cout << " modus is: " << shrd->prev_mode_bypass << "  whatdo you see? " << endl;
 }
 
 void GuiApp::mouseEntered(int x, int y)

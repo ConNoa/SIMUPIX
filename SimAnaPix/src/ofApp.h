@@ -6,6 +6,8 @@
 #include "ofxCv.h"
 #include "ofxOpenCv.h"
 #include <opencv2/highgui.hpp>
+#include "ofAppGLFWWindow.h"
+#include "radarApp.hpp"
 #include <memory>
 
 class ofApp : public ofBaseApp
@@ -31,7 +33,11 @@ public:
 	cv::Mat ofImgToCVMat(ofImage const &img_in);
 
 	// ofImage test_img;
+	ofTexture act_shown_img;
+
+
 	ofTexture preview_tex_img;
+	ofTexture sample_tex_img;
 	ofPoint pnt[4];
 	ofRectangle draw_bnds;
 	// ofRectangle subsec_bnds;

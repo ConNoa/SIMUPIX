@@ -8,6 +8,10 @@
 #include <opencv2/highgui.hpp>
 #include <memory>
 #include "filter.hpp"
+//#include "ImgPrev.hpp"
+
+
+
 
 struct State{
     int main_window_w;
@@ -16,11 +20,10 @@ struct State{
     int last_click_x, last_click_y;
 
     //---- deklaration for Previewvariables
-
-    int PR_pos_x_;
-    int PR_pos_y_;
-    int PR_max_w_;
-    int PR_max_h_;
+    int IP_pos_x = 300;
+    int IP_pos_y = 600;
+    int IP_max_w = 400;
+    int IP_max_h = 300;
 
     int prevrw;
     int prevrh;
@@ -35,6 +38,9 @@ struct State{
 
     //-----------some FLAGS
     bool gui_changed;
+    bool prev_mode_bypass;
+
+
     int dropdownvalue;
 
     bool filter_loaded;
@@ -49,6 +55,8 @@ struct State{
     //--cv::STRUCTS
     Filter pix_filter;
 
+
+
     cv::Mat actual_filterdata;
     cv::Mat lena_mat;
     cv::Mat submat;
@@ -56,6 +64,7 @@ struct State{
 
     // Images
     vector<string> image_files = {};
+    vector<ofTexture> image_database = {};
 
     ofTexture prev_img;
     ofPoint pnt[4];
@@ -85,9 +94,10 @@ struct State{
     ofxPanel gui_s2;
     ofxPanel gui_s3;
 
-    ofxDatGui *m_gui;
-    ofxDatGuiDropdown *dropdown;
-    ofxDatGui *zoom_gui;
+    ofxDatGui* m_gui;
+    ofxDatGuiDropdown* dropdown;
+    ofxDatGui* zoom_gui;
+    ofxDatGuiToggle* sample_toggle;
 
     vector<ofxDatGuiComponent *> components;
 
@@ -98,7 +108,7 @@ struct State{
     //-----sampleparameters
     ofParameter<int> m_sampleamm_abs;
     ofParameter<float> m_sampleamm_rel;
-    ofParameter<float> m_superpix_res;
+    ofParameter<int> m_superpix_res;
     ofParameter<int> superpixel_width;
     ofParameter<int> superpixel_height;
     ofParameter<int> cosx_e;
@@ -122,4 +132,6 @@ struct State{
     ofParameter<int> dim_SP_ges_y;
     ofxLabel dim_monitor1;
     ofxLabel label;
+
+    
 };

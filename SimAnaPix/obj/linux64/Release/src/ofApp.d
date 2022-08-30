@@ -697,7 +697,8 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/structs.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterdata.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp \
- /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/radarApp.hpp
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.h:
 
@@ -2128,3 +2129,5 @@ obj/linux64/Release/src/ofApp.o: \
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp:
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/radarApp.hpp:

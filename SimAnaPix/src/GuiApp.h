@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "State.h"
+//#include "ImgPrev.hpp"
+
 
 class GuiApp: public ofBaseApp {
 public:
@@ -12,6 +14,7 @@ public:
     void read_Corpus();
     void setup_gui();
 
+    void onToggleEvent(ofxDatGuiToggleEvent e);
     void onSliderEvent(ofxDatGuiSliderEvent e);
     void onDropdownEvent(ofxDatGuiDropdownEvent e);
 
@@ -42,5 +45,24 @@ public:
     void mouseEventPos(int x, int y);
 
     shared_ptr<State> shrd;
+
+    ofTexture actualImg;
+
+    // ImagePreview  position and width
+    /*
+    int IP_pos_x_ = shrd-> IP_pos_x;
+    int IP_pos_y_ = shrd-> IP_pos_y;
+    int IP_max_w_ = shrd-> IP_max_h;
+    int IP_max_h_ = shrd-> IP_max_w;
+    */
+    int IP_pos_x_ = 300;
+    int IP_pos_y_ = 300;
+    int IP_max_w_ = 300;
+    int IP_max_h_ = 300;
+    //ImgPreview img_prev;
+
+    // shared_ptr<ImgPreview> img_prev(new ImgPreview);
+    // img_prev->shrd = shrd;
+
 };
 
