@@ -1,13 +1,13 @@
 #pragma once
 
+#include <opencv2/highgui.hpp>
+#include "ofAppGLFWWindow.h"
 #include "ofMain.h"
 #include "State.h"
 #include "GuiApp.h"
-#include "ofxCv.h"
 #include "ofxOpenCv.h"
-#include <opencv2/highgui.hpp>
-#include "ofAppGLFWWindow.h"
-#include "radarApp.hpp"
+#include "ofxCv.h"
+#include "BeamerApp.hpp"
 #include <memory>
 
 class ofApp : public ofBaseApp
@@ -15,9 +15,10 @@ class ofApp : public ofBaseApp
 
 public:
 	void setup();
-
 	void update();
 	void draw();
+
+
 	void drawPresentWindow();
 
 	void windowResized(int w, int h);
@@ -35,8 +36,10 @@ public:
 	// ofImage test_img;
 	ofTexture act_shown_img;
 
+	float scalefac;
 
-	ofTexture preview_tex_img;
+
+	//ofTexture preview_tex_img;
 	ofTexture sample_tex_img;
 	ofPoint pnt[4];
 	ofRectangle draw_bnds;

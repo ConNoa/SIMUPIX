@@ -2,8 +2,12 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxCv.h"
 #include "State.h"
-//#include "ImgPrev.hpp"
+#include "ImgPreview.hpp"
+#include "CorpusInspektor.hpp"
+#include "BeamerApp.hpp"
+#include "ofApp.h"
 
 
 class GuiApp: public ofBaseApp {
@@ -26,7 +30,7 @@ public:
 
     void setup_filter();
 
-    void setup_imgPreview();
+    // void setup_imgPreview();
 
     void draw_imgPreview();
 
@@ -48,18 +52,26 @@ public:
 
     ofTexture actualImg;
 
-    // ImagePreview  position and width
-    /*
-    int IP_pos_x_ = shrd-> IP_pos_x;
-    int IP_pos_y_ = shrd-> IP_pos_y;
-    int IP_max_w_ = shrd-> IP_max_h;
-    int IP_max_h_ = shrd-> IP_max_w;
-    */
-    int IP_pos_x_ = 300;
-    int IP_pos_y_ = 300;
-    int IP_max_w_ = 300;
-    int IP_max_h_ = 300;
-    //ImgPreview img_prev;
+    // // ImagePreview  position and width
+    // /*
+    // int IP_pos_x_ = shrd-> IP_pos_x;
+    // int IP_pos_y_ = shrd-> IP_pos_y;
+    // int IP_max_w_ = shrd-> IP_max_h;
+    // int IP_max_h_ = shrd-> IP_max_w;
+    // */
+
+    // //-------------HeavYDUMMYVAULRS------------
+    // //-------------HeavYDUMMYVAULRS------------
+    // //-------------HeavYDUMMYVAULRS------------
+    // int IP_pos_x_;
+    // int IP_pos_y_;
+    // int IP_max_w_;
+    // int IP_max_h_;
+    // //-------------HeavYDUMMYVAULRS------------
+    // //-------------HeavYDUMMYVAULRS------------
+    // //-------------HeavYDUMMYVAULRS------------
+    CorpusInspektor img_corpus;
+    ImgPreview img_prev;
 
     // shared_ptr<ImgPreview> img_prev(new ImgPreview);
     // img_prev->shrd = shrd;

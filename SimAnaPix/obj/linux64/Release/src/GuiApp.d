@@ -533,28 +533,6 @@ obj/linux64/Release/src/GuiApp.o: \
  /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
  /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
  /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
- /home/pixel/Desktop/3_Simulation/SimAnaPix/src/State.h \
- /home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h \
- /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h \
- /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h \
- /home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h \
  /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
  /usr/local/include/opencv4/opencv2/opencv.hpp \
  /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
@@ -682,6 +660,28 @@ obj/linux64/Release/src/GuiApp.o: \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/State.h \
+ /home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h \
+ /home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvImage.h \
@@ -696,7 +696,12 @@ obj/linux64/Release/src/GuiApp.o: \
  /usr/local/include/opencv4/opencv2/highgui/highgui.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/structs.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterdata.hpp \
- /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ImgPreview.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/PreviewRect.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/CorpusInspektor.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/BeamerApp.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.h
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h:
 
@@ -1798,50 +1803,6 @@ obj/linux64/Release/src/GuiApp.o: \
 
 /home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
 
-/home/pixel/Desktop/3_Simulation/SimAnaPix/src/State.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
-
 /home/pixel/OF/addons/ofxCv/src/ofxCv.h:
 
 /usr/local/include/opencv4/opencv2/opencv.hpp:
@@ -2096,6 +2057,50 @@ obj/linux64/Release/src/GuiApp.o: \
 
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h:
 
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/State.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
+
 /home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h:
 
 /home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h:
@@ -2125,3 +2130,13 @@ obj/linux64/Release/src/GuiApp.o: \
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterdata.hpp:
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/ImgPreview.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/PreviewRect.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/CorpusInspektor.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/BeamerApp.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.h:

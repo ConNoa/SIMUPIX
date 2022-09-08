@@ -102,7 +102,7 @@ void Filter::createFilter(int size_, int exp_, int iterations_){
   set_it(iterations_);
   cv::Mat output = doppelintegral_array(low_bound, high_bound, m_filtersize, m_iterations, m_exponent);
 
-  cout << "Filter cos^"<<m_exponent<<" with size "<< m_filtersize<<" computed with "<< m_iterations << " iterations.  M="  << output<< endl << endl;
+  //cout << "Filter cos^"<<m_exponent<<" with size "<< m_filtersize<<" computed with "<< m_iterations << " iterations.  M="  << output<< endl << endl;
 
   ht_filter.insert(make_pair<FilterKey>({to_string(m_iterations), to_string(m_exponent), to_string(m_filtersize)},output));
 
@@ -111,7 +111,7 @@ void Filter::createFilter(int size_, int exp_, int iterations_){
 
 void Filter::createFilter_xy(int width_, int height_, int cosx_, int cosy_){
   cv::Mat filter_out = Mat(height_, width_, CV_64FC1);
-  cout << filter_out.rows <<" rows in mat [createfilter], cols:"<<filter_out.cols<<endl;
+ // cout << filter_out.rows <<" rows in mat [createfilter], cols:"<<filter_out.cols<<endl;
   //
   //---------------------if bedingung läuft noch nicht keine matritzen vorgespeichert
   //
@@ -215,7 +215,7 @@ map<int, vector<cv::Mat>>Filter::get_intgrl_array_map(int size_from, int size_to
         cout << " immer noch hier "<< endl;
 
     } else {
-        cout << " Key found before"<<  i << " got pushed back to vec in integalmap[""<<i<<""]" ;
+      //  cout << " Key found before"<<  i << " got pushed back to vec in integalmap[""<<i<<""]" ;
     // found
         tempVec = integral_array(i,iterations_, j);
 

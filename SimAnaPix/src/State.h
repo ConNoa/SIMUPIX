@@ -38,6 +38,7 @@ struct State{
 
     //-----------some FLAGS
     bool gui_changed;
+    bool bor_changed = false;   //beameroutputresolution changed
     bool prev_mode_bypass;
 
 
@@ -66,7 +67,11 @@ struct State{
     vector<string> image_files = {};
     vector<ofTexture> image_database = {};
 
+    // Textures shown on each screen
+    ofTexture actl_img;
     ofTexture prev_img;
+    ofTexture beam_img;
+
     ofPoint pnt[4];
     ofRectangle draw_bnds;
 
@@ -82,6 +87,8 @@ struct State{
     int width_roi, height_roi;
 
     int mouse_x, mouse_y;
+    int pos_x_ = 0;
+    int pos_y_ = 0;
 
     ofxPanel gui;
     float pos_s1_x;
@@ -91,20 +98,14 @@ struct State{
     float pos_s3_x;
     float pos_s3_y;
 
-    ofxPanel gui_s2;
-    ofxPanel gui_s3;
+    // ofxPanel gui_s2;
+    // ofxPanel gui_s3;
 
     ofxDatGui* m_gui;
     ofxDatGuiDropdown* dropdown;
     ofxDatGui* zoom_gui;
     ofxDatGuiToggle* sample_toggle;
-
     vector<ofxDatGuiComponent *> components;
-
-    // ofParameterGroup sample_slider_1;
-    // ofParameterGroup command_slider_2;
-    // ofParameterGroup info_slider_3;
-
     //-----sampleparameters
     ofParameter<int> m_sampleamm_abs;
     ofParameter<float> m_sampleamm_rel;
@@ -115,19 +116,16 @@ struct State{
     ofParameter<int> cosy_e;
     ofParameter<int> border_width;
     ofParameter<int> border_height;
-
+    ofParameter<int> out_res_x;
+    ofParameter<int> out_res_y;
+    ofParameter<bool> switch_screen1;
     //-----zoom-GUI
-    ofParameter<int> m_zoom_fac;
-
+    ofParameter<float> m_zoom_fac;
     //-----command-GUI
-
     ofParameter<bool> compute_filter;
     ofParameter<bool> randomsamp;
-    ofParameter<bool> switch_screen1;
     ofParameter<bool> switch_screen2;
-
     //----informational-GUI
-
     ofParameter<int> dim_SP_ges_x;
     ofParameter<int> dim_SP_ges_y;
     ofxLabel dim_monitor1;

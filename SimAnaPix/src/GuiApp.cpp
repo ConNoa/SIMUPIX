@@ -1,6 +1,12 @@
 #include "GuiApp.h"
 
 void GuiApp::setup(){
+
+    //--- link shared_ptr of all sub classes to the "State" struct
+    
+    img_corpus.shrd = shrd;
+    img_prev.shrd = shrd;
+
     ofSetVerticalSync(true);
     // Backgroundcolor
     ofBackground(999999);
@@ -14,15 +20,24 @@ void GuiApp::setup(){
     shrd->width_roi = 10;
     shrd->height_roi = 10;
 
-    read_Corpus();
-    ofLoadImage(actualImg, shrd->image_files[0]);
+    // ---- read images in folders to get imagelist
+
+    img_corpus.read_corpus();
+    img_corpus.load_images();
+
+    img_corpus.set_actl_image(0);
+
     setup_gui();
     setup_filter();
 
-    //ImgPreview createPrevImg(ofTexture const& actualImg, int IP_pos_x_, int IP_pos_y_, int IP_max_h_, int IP_max_w_);
-   // img_prev = createPrevImg;
     
-    setup_imgPreview();
+
+    //Create PreviewImage Object in order to receive an overview on the gui screen
+    //ImgPreview createPrevImg(ofTexture const& shrd->actl_img, int IP_pos_x_, int IP_pos_y_, int IP_max_h_, int IP_max_w_);
+    img_prev.setup();
+    img_prev.set_img(shrd->actl_img);
+    
+    //setup_imgPreview();
 
     if (!(shrd->bHide))draw_gui();
     ofSetColor(255);
@@ -44,9 +59,10 @@ void GuiApp::draw(){
 
     draw_filterPreview();
 
-    draw_imgPreview();
+    // draw_imgPreview();
+    img_prev.draw();
 
-    draw_Preview_Rect();
+    //draw_Preview_Rect();
 
     if (!shrd->bHide)draw_gui();
     ofSetColor(255);
@@ -56,48 +72,45 @@ void GuiApp::draw(){
 }
 
 // Get files of input folder:
-void GuiApp::read_Corpus(){
-    DIR *dp;
-    struct dirent *dirp;
-    if ((dp = opendir(shrd->source_folder.c_str())) == NULL)
-    {
-        std::cout << "Error(" << errno << ") opening " << shrd->source_folder << std::endl;
-    }
-
-    const std::string srce_fldr_path = shrd->source_folder;
-    const char* chr_srce_fldr_path = srce_fldr_path.c_str();
-
-    while ((dirp = readdir(dp)) != NULL)
-    {
-        if (((std::string("README")).compare(dirp->d_name) != 0) && ((std::string(".")).compare(dirp->d_name) != 0) && ((std::string("..")).compare(dirp->d_name) != 0))
-        {
-            std::cout << "Found " << dirp->d_name << std::endl;
-            // Magick::Image local_file_image(source_folder + "/" + dirp->d_name);
-            // if (check_format(local_file_image) == true)
-            // {
-            char newname[800];
-            strcpy(newname, "01_possible_corpus/");
-            std::strcat(newname, dirp->d_name);
-            std::cout<< "newname before pushback! "<< newname <<std::endl;
-            shrd->image_files.push_back(std::string(newname));
-
-            // }
-            // else
-            // {
-            // 	std::cout << source_folder + "/" + dirp->d_name << " has wrong format" << std::endl;
-            // 	moveFileTo(dirp->d_name, source_folder, reject_folder);
-            // 	char newname[800];
-            // 	strcpy(newname, "wrong_format_");
-            // 	std::strcat(newname, dirp->d_name);
-            // 	rename_file(dirp->d_name, reject_folder, newname);
-            // }
-        }
-        std::cout << std::endl;
-    }
-    closedir(dp);
-    std::cout << "Number of files in possible corpus: " << shrd->image_files.size() << std::endl;
-    return;
-}
+// void GuiApp::read_Corpus(){
+//     DIR *dp;
+//     struct dirent *dirp;
+//     if ((dp = opendir(shrd->source_folder.c_str())) == NULL)
+//     {
+//         std::cout << "Error(" << errno << ") opening " << shrd->source_folder << std::endl;
+//     }
+//     const std::string srce_fldr_path = shrd->source_folder;
+//     const char* chr_srce_fldr_path = srce_fldr_path.c_str();
+//     while ((dirp = readdir(dp)) != NULL)
+//     {
+//         if (((std::string("README")).compare(dirp->d_name) != 0) && ((std::string(".")).compare(dirp->d_name) != 0) && ((std::string("..")).compare(dirp->d_name) != 0))
+//         {
+//             std::cout << "Found " << dirp->d_name << std::endl;
+//             // Magick::Image local_file_image(source_folder + "/" + dirp->d_name);
+//             // if (check_format(local_file_image) == true)
+//             // {
+//             char newname[800];
+//             strcpy(newname, "01_possible_corpus/");
+//             std::strcat(newname, dirp->d_name);
+//             std::cout<< "newname before pushback! "<< newname <<std::endl;
+//             shrd->image_files.push_back(std::string(newname));
+//             // }
+//             // else
+//             // {
+//             // 	std::cout << source_folder + "/" + dirp->d_name << " has wrong format" << std::endl;
+//             // 	moveFileTo(dirp->d_name, source_folder, reject_folder);
+//             // 	char newname[800];
+//             // 	strcpy(newname, "wrong_format_");
+//             // 	std::strcat(newname, dirp->d_name);
+//             // 	rename_file(dirp->d_name, reject_folder, newname);
+//             // }
+//         }
+//         std::cout << std::endl;
+//     }
+//     closedir(dp);
+//     std::cout << "Number of files in possible corpus: " << shrd->image_files.size() << std::endl;
+//     return;
+// }
 
 void GuiApp::setup_gui()
 {
@@ -118,7 +131,10 @@ void GuiApp::setup_gui()
     shrd->cosy_e.set("Cosy^", 1, 0, 15);
     shrd->border_width.set("Border width", 0, 0, 5);
     shrd->border_height.set("Border height", 0, 0, 5);
-    shrd->switch_screen1.set(" Only sampled informations ", true);
+    shrd->out_res_x.set("Beamer Output Resolution", 800, 800, 1920);
+    shrd->out_res_y.set("Beamer Output Resolution", 600, 600, 1080);
+
+    //shrd->switch_screen1.set(" Only sampled informations ", true);
 
     shrd->m_gui = new ofxDatGui();
     shrd->m_gui->addLabel("Sample Parameters");
@@ -131,6 +147,9 @@ void GuiApp::setup_gui()
     shrd->m_gui->addSlider(shrd->cosy_e);
     shrd->m_gui->addSlider(shrd->border_width);
     shrd->m_gui->addSlider(shrd->border_height);
+    shrd->m_gui->addSlider(shrd->out_res_x);
+    shrd->m_gui->addSlider(shrd->out_res_y);
+    shrd->m_gui->addToggle(" Only sampled informations " , shrd->switch_screen1);
     shrd->m_gui->setPosition(20, 100);
     shrd->m_gui->onSliderEvent(this, &GuiApp::onSliderEvent);
 
@@ -164,7 +183,17 @@ void GuiApp::onSliderEvent(ofxDatGuiSliderEvent e)
 {
     cout << e.target->getName() << " : " << e.value << endl;
     shrd->prev_mode_bypass = shrd->m_superpix_res;
-    compute_alphfilter(shrd->superpixel_width, shrd->superpixel_height, shrd->cosx_e, shrd->cosy_e);
+
+    if (e.target->getName() == "S.Pix width" || "S.Pix height" || "Cosx^" || "Cosy^")
+    {
+        cout << "SPIX w h cosx y  changed update SPIX  now" << endl;
+        compute_alphfilter(shrd->superpixel_width, shrd->superpixel_height, shrd->cosx_e, shrd->cosy_e);
+    }
+    if (e.target->getName() == "Beamer Output Resolution")
+    {
+        cout << "BOR changed update Beameroutput now" << endl;
+        shrd->bor_changed = true;
+    }
 }
 
 
@@ -173,6 +202,8 @@ void GuiApp::onDropdownEvent(ofxDatGuiDropdownEvent e)
     shrd->dropdownvalue = e.child;
     shrd->gui_changed = true;
     load_selImg(e);
+    //img_prev.set_img(shrd->actl_img);
+
 }
 
 void GuiApp::compute_alphfilter(int w_, int h_, int cosx_, int cosy_)
@@ -187,7 +218,7 @@ void GuiApp::load_selImg(ofxDatGuiDropdownEvent in_)
 {
     cout << "onDropdownEvent: " << in_.child << endl;
 
-    ofLoadImage(actualImg, shrd->image_files[in_.child]);
+    ofLoadImage(shrd->actl_img, shrd->image_files[in_.child]);
 }
 
 void GuiApp::draw_filterPreview()
@@ -243,68 +274,6 @@ void GuiApp::setup_filter()
     compute_alphfilter(shrd->superpixel_width, shrd->superpixel_height, shrd->cosx_e, shrd->cosy_e);
 }
 
-void GuiApp::setup_imgPreview()
-{
-    shrd->pnt[0].x = 0;
-    shrd->pnt[0].y = 0;
-    shrd->pnt[1].x = (float)(ofGetWidth());
-    shrd->pnt[1].y = 0;
-    shrd->pnt[2].x = (float)ofGetWidth();
-    shrd->pnt[2].y = (float)ofGetHeight();
-    shrd->pnt[3].x = 0;
-    shrd->pnt[3].y = (float)(ofGetHeight());
-    shrd->draw_bnds.set(shrd->pnt[0], shrd->pnt[2]);
-
-    shrd->mouse_x_dr = IP_pos_x_ + IP_max_w_ / 2;
-    shrd->mouse_y_dr = IP_pos_y_ + IP_max_h_ / 2;
-
-    shrd->dragOffset_x = 0;
-    shrd->dragOffset_y = 0;
-}
-
-void GuiApp::draw_imgPreview(){
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    ofBeginShape();
-    ofFill();
-    ofSetColor(0);
-    ofDrawRectangle(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, IP_max_w_, IP_max_h_);
-    ofEndShape();
-    ofSetColor(255);
-  //  shrd->scalefac = max((actualImg.getWidth() / IP_max_w_), (actualImg.getHeight() / IP_max_h_));
-  //---------
-    shrd->scalefac = 2; // DEbugtest
-  //---------  //---------
-
-    shrd->truth_scalefac = shrd->scalefac * (float)shrd->m_zoom_fac;
-    actualImg.draw(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, actualImg.getWidth() / shrd->scalefac, actualImg.getHeight() / shrd->scalefac);
-    ofBeginShape();
-    ofNoFill();
-    ofSetColor(50, 205, 50);
-    ofDrawRectangle(IP_pos_x_ + IP_max_w_ / 2, IP_pos_y_ + IP_max_h_ / 2, IP_max_w_, IP_max_h_);
-    ofEndShape();
-    ofSetColor(255);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-
-    return;
-}
-
-void GuiApp::draw_Preview_Rect()
-{
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    ofBeginShape();
-    ofNoFill();
-    ofSetColor(255, 0, 255);
-    shrd->prevrw = shrd->main_window_w / actualImg.getWidth() * (actualImg.getWidth() / shrd->truth_scalefac);
-    shrd->prevrh = shrd->main_window_h / actualImg.getHeight() * (actualImg.getHeight() / shrd->truth_scalefac);
-    shrd->prevrx = shrd->mouse_x_dr + shrd->dragOffset_x / shrd->truth_scalefac;
-    shrd->prevry = shrd->mouse_y_dr + shrd->dragOffset_y / shrd->truth_scalefac;
-
-    ofDrawRectangle(shrd->prevrx, shrd->prevry, shrd->prevrw, shrd->prevrh);
-    ofEndShape();
-    ofSetColor(255);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-}
-
 void GuiApp::draw_gui()
 {
 
@@ -318,18 +287,18 @@ void GuiApp::draw_gui()
 
 void GuiApp::mouseDragged(int x, int y, int button)
 {
-    if ((shrd->last_click_x > IP_pos_x_) && (shrd->last_click_x < (IP_pos_x_ + IP_max_w_)) && (shrd->last_click_y > IP_pos_y_) && (shrd->last_click_y < (IP_pos_y_ + IP_max_h_)))
+    if ((shrd->last_click_x > shrd->IP_pos_x) && (shrd->last_click_x < (shrd->IP_pos_x + shrd->IP_max_w)) && (shrd->last_click_y > shrd->IP_pos_y) && (shrd->last_click_y < (shrd->IP_pos_y + shrd->IP_max_h)))
     {
         // cout << "mouse-dr   x:" << x << " y:" << y << " button:" << button << endl;
-        if ((x > (IP_pos_x_ + shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)))
+        if ((x > (shrd->IP_pos_x + shrd->prevrw / 2)) && (x < (shrd->IP_pos_x + shrd->IP_max_w - shrd->prevrw / 2)))
         {
             shrd->mouse_x_dr = x;
-            if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
+            if ((y >= (shrd->IP_pos_y + shrd->prevrh / 2)) && (y < (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2)))
             {
                 shrd->mouse_y_dr = y;
             }
         }
-        else if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
+        else if ((y >= (shrd->IP_pos_y + shrd->prevrh / 2)) && (y < (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2)))
         {
             shrd->mouse_y_dr = y;
         }
@@ -345,39 +314,39 @@ void GuiApp::mousePressed(int x, int y, int button)
     shrd->last_click_x = x;
     shrd->last_click_y = y;
 
-    if ((shrd->last_click_x > IP_pos_x_) && (shrd->last_click_x < (IP_pos_x_ + IP_max_w_)) && (shrd->last_click_y > IP_pos_y_) && (shrd->last_click_y < (IP_pos_y_ + IP_max_h_)))
+    if ((shrd->last_click_x > shrd->IP_pos_x) && (shrd->last_click_x < (shrd->IP_pos_x + shrd->IP_max_w)) && (shrd->last_click_y > shrd->IP_pos_y) && (shrd->last_click_y < (shrd->IP_pos_y + shrd->IP_max_h)))
     {
 
         cout << "mouse-pr   x:" << x << " y:" << y << " button:" << button << endl;
-        if ((x > (IP_pos_x_ + shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)))
+        if ((x > (shrd->IP_pos_x + shrd->prevrw / 2)) && (x < (shrd->IP_pos_x + shrd->IP_max_w - shrd->prevrw / 2)))
         {
             shrd->mouse_x_dr = x;
-            if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
+            if ((y >= (shrd->IP_pos_y + shrd->prevrh / 2)) && (y < (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2)))
             {
                 shrd->mouse_y_dr = y;
             }
         }
-        else if ((y >= (IP_pos_y_ + shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)))
+        else if ((y >= (shrd->IP_pos_y + shrd->prevrh / 2)) && (y < (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2)))
         {
             shrd->mouse_y_dr = y;
         }
 
-        if ((y >= (IP_pos_y_)) && (y < (IP_pos_y_ + shrd->prevrh / 2)))
+        if ((y >= (shrd->IP_pos_y)) && (y < (shrd->IP_pos_y + shrd->prevrh / 2)))
         {
-            shrd->mouse_y_dr = (IP_pos_y_ + shrd->prevrh / 2);
+            shrd->mouse_y_dr = (shrd->IP_pos_y + shrd->prevrh / 2);
         }
-        else if ((y >= (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2)) && (y < (IP_pos_y_ + IP_max_h_)))
+        else if ((y >= (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2)) && (y < (shrd->IP_pos_y + shrd->IP_max_h)))
         {
-            shrd->mouse_y_dr = (IP_pos_y_ + IP_max_h_ - shrd->prevrh / 2);
+            shrd->mouse_y_dr = (shrd->IP_pos_y + shrd->IP_max_h - shrd->prevrh / 2);
         }
 
-        if ((x >= (IP_pos_x_)) && (x < (IP_pos_x_ + shrd->prevrw / 2)))
+        if ((x >= (shrd->IP_pos_x)) && (x < (shrd->IP_pos_x + shrd->prevrw / 2)))
         {
-            shrd->mouse_x_dr = (IP_pos_x_ + shrd->prevrw / 2);
+            shrd->mouse_x_dr = (shrd->IP_pos_x + shrd->prevrw / 2);
         }
-        else if ((x >= (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2)) && (x < (IP_pos_x_ + IP_max_w_)))
+        else if ((x >= (shrd->IP_pos_x + shrd->IP_max_w - shrd->prevrw / 2)) && (x < (shrd->IP_pos_x + shrd->IP_max_w)))
         {
-            shrd->mouse_x_dr = (IP_pos_x_ + IP_max_w_ - shrd->prevrw / 2);
+            shrd->mouse_x_dr = (shrd->IP_pos_x + shrd->IP_max_w - shrd->prevrw / 2);
         }
     }
 

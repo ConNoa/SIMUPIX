@@ -1,23 +1,41 @@
 obj/linux64/Release/src/ofApp.o: \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.cpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.h \
- /home/pixel/OF/libs/openFrameworks/ofMain.h \
+ /usr/local/include/opencv4/opencv2/highgui.hpp \
+ /usr/local/include/opencv4/opencv2/core.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvdef.h \
+ /usr/local/include/opencv4/opencv2/core/version.hpp \
+ /usr/local/include/opencv4/opencv2/core/hal/interface.h \
+ /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+ /usr/local/include/opencv4/opencv2/core/base.hpp \
+ /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+ /usr/local/include/opencv4/opencv2/core/neon_utils.hpp \
+ /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp \
+ /usr/local/include/opencv4/opencv2/core/check.hpp \
+ /usr/local/include/opencv4/opencv2/core/traits.hpp \
+ /usr/local/include/opencv4/opencv2/core/matx.hpp \
+ /usr/local/include/opencv4/opencv2/core/saturate.hpp \
+ /usr/local/include/opencv4/opencv2/core/fast_math.hpp \
+ /usr/local/include/opencv4/opencv2/core/types.hpp \
+ /usr/local/include/opencv4/opencv2/core/mat.hpp \
+ /usr/local/include/opencv4/opencv2/core/bufferpool.hpp \
+ /usr/local/include/opencv4/opencv2/core/mat.inl.hpp \
+ /usr/local/include/opencv4/opencv2/core/persistence.hpp \
+ /usr/local/include/opencv4/opencv2/core/operations.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp \
+ /usr/local/include/opencv4/opencv2/core/utility.hpp \
+ /usr/local/include/opencv4/opencv2/core/optim.hpp \
+ /usr/local/include/opencv4/opencv2/core/ovx.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvdef.h \
+ /usr/local/include/opencv4/opencv2/imgcodecs.hpp \
+ /usr/local/include/opencv4/opencv2/videoio.hpp \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h \
  /home/pixel/OF/libs/tess2/include/tesselator.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEvent.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofTimer.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofUtils.h \
- /home/pixel/OF/libs/utf8/include/utf8.h \
- /home/pixel/OF/libs/utf8/include/utf8/checked.h \
- /home/pixel/OF/libs/utf8/include/utf8/core.h \
- /home/pixel/OF/libs/utf8/include/utf8/unchecked.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h \
  /home/pixel/OF/libs/glm/include/glm/vec2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec2.hpp \
@@ -36,6 +54,35 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_int2_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2_precision.hpp \
+ /home/pixel/OF/libs/openFrameworks/types/ofRectangle.h \
+ /home/pixel/OF/libs/glm/include/glm/vec3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp \
+ /home/pixel/OF/libs/openFrameworks/ofMain.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEvent.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofTimer.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofUtils.h \
+ /home/pixel/OF/libs/utf8/include/utf8.h \
+ /home/pixel/OF/libs/utf8/include/utf8/checked.h \
+ /home/pixel/OF/libs/utf8/include/utf8/core.h \
+ /home/pixel/OF/libs/utf8/include/utf8/unchecked.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofThread.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofJson.h \
@@ -61,20 +108,6 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_int4_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/vec3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp \
- /home/pixel/OF/libs/openFrameworks/types/ofRectangle.h \
  /home/pixel/OF/libs/openFrameworks/types/ofColor.h \
  /home/pixel/OF/libs/glm/include/glm/common.hpp \
  /home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp \
@@ -269,7 +302,6 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h \
  /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.inl \
  /home/pixel/OF/libs/openFrameworks/app/ofAppRunner.h \
- /home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h \
  /home/pixel/OF/libs/openFrameworks/app/ofMainLoop.h \
  /home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h \
  /home/pixel/OF/libs/openFrameworks/3d/of3dPrimitives.h \
@@ -300,8 +332,6 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/libs/openFrameworks/graphics/ofTrueTypeFont.h \
  /home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h \
  /home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h \
- /home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h \
- /home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h \
  /home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h \
  /home/pixel/OF/libs/openFrameworks/sound/ofSoundStream.h \
  /home/pixel/OF/libs/openFrameworks/sound/ofSoundPlayer.h \
@@ -557,33 +587,6 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
  /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
  /usr/local/include/opencv4/opencv2/opencv.hpp \
- /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
- /usr/local/include/opencv4/opencv2/core.hpp \
- /usr/local/include/opencv4/opencv2/core/cvdef.h \
- /usr/local/include/opencv4/opencv2/core/version.hpp \
- /usr/local/include/opencv4/opencv2/core/hal/interface.h \
- /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
- /usr/local/include/opencv4/opencv2/core/base.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
- /usr/local/include/opencv4/opencv2/core/neon_utils.hpp \
- /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp \
- /usr/local/include/opencv4/opencv2/core/check.hpp \
- /usr/local/include/opencv4/opencv2/core/traits.hpp \
- /usr/local/include/opencv4/opencv2/core/matx.hpp \
- /usr/local/include/opencv4/opencv2/core/saturate.hpp \
- /usr/local/include/opencv4/opencv2/core/fast_math.hpp \
- /usr/local/include/opencv4/opencv2/core/types.hpp \
- /usr/local/include/opencv4/opencv2/core/mat.hpp \
- /usr/local/include/opencv4/opencv2/core/bufferpool.hpp \
- /usr/local/include/opencv4/opencv2/core/mat.inl.hpp \
- /usr/local/include/opencv4/opencv2/core/persistence.hpp \
- /usr/local/include/opencv4/opencv2/core/operations.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp \
- /usr/local/include/opencv4/opencv2/core/utility.hpp \
- /usr/local/include/opencv4/opencv2/core/optim.hpp \
- /usr/local/include/opencv4/opencv2/core/ovx.hpp \
- /usr/local/include/opencv4/opencv2/core/cvdef.h \
  /usr/local/include/opencv4/opencv2/calib3d.hpp \
  /usr/local/include/opencv4/opencv2/features2d.hpp \
  /usr/local/include/opencv4/opencv2/flann/miniflann.hpp \
@@ -629,9 +632,6 @@ obj/linux64/Release/src/ofApp.o: \
  /usr/local/include/opencv4/opencv2/flann/index_testing.h \
  /usr/local/include/opencv4/opencv2/flann/timer.h \
  /usr/local/include/opencv4/opencv2/flann/sampling.h \
- /usr/local/include/opencv4/opencv2/highgui.hpp \
- /usr/local/include/opencv4/opencv2/imgcodecs.hpp \
- /usr/local/include/opencv4/opencv2/videoio.hpp \
  /usr/local/include/opencv4/opencv2/imgproc.hpp \
  /usr/local/include/opencv4/opencv2/./imgproc/segmentation.hpp \
  /usr/local/include/opencv4/opencv2/ml.hpp \
@@ -698,43 +698,82 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterdata.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/filterkey.hpp \
  /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h \
- /home/pixel/Desktop/3_Simulation/SimAnaPix/src/radarApp.hpp
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ImgPreview.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/PreviewRect.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/CorpusInspektor.hpp \
+ /home/pixel/Desktop/3_Simulation/SimAnaPix/src/BeamerApp.hpp
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/ofApp.h:
 
-/home/pixel/OF/libs/openFrameworks/ofMain.h:
+/usr/local/include/opencv4/opencv2/highgui.hpp:
+
+/usr/local/include/opencv4/opencv2/core.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvdef.h:
+
+/usr/local/include/opencv4/opencv2/core/version.hpp:
+
+/usr/local/include/opencv4/opencv2/core/hal/interface.h:
+
+/usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
+
+/usr/local/include/opencv4/opencv2/core/base.hpp:
+
+/usr/local/include/opencv4/opencv2/opencv_modules.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
+
+/usr/local/include/opencv4/opencv2/core/neon_utils.hpp:
+
+/usr/local/include/opencv4/opencv2/core/vsx_utils.hpp:
+
+/usr/local/include/opencv4/opencv2/core/check.hpp:
+
+/usr/local/include/opencv4/opencv2/core/traits.hpp:
+
+/usr/local/include/opencv4/opencv2/core/matx.hpp:
+
+/usr/local/include/opencv4/opencv2/core/saturate.hpp:
+
+/usr/local/include/opencv4/opencv2/core/fast_math.hpp:
+
+/usr/local/include/opencv4/opencv2/core/types.hpp:
+
+/usr/local/include/opencv4/opencv2/core/mat.hpp:
+
+/usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
+
+/usr/local/include/opencv4/opencv2/core/mat.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/core/persistence.hpp:
+
+/usr/local/include/opencv4/opencv2/core/operations.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/core/utility.hpp:
+
+/usr/local/include/opencv4/opencv2/core/optim.hpp:
+
+/usr/local/include/opencv4/opencv2/core/ovx.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvdef.h:
+
+/usr/local/include/opencv4/opencv2/imgcodecs.hpp:
+
+/usr/local/include/opencv4/opencv2/videoio.hpp:
+
+/home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h:
 
 /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h:
 
 /home/pixel/OF/libs/tess2/include/tesselator.h:
 
-/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
+/home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h:
 
-/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEvent.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofTimer.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofUtils.h:
-
-/home/pixel/OF/libs/utf8/include/utf8.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/checked.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/core.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/unchecked.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h:
+/home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h:
 
 /home/pixel/OF/libs/glm/include/glm/vec2.hpp:
 
@@ -771,6 +810,64 @@ obj/linux64/Release/src/ofApp.o: \
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2_precision.hpp:
+
+/home/pixel/OF/libs/openFrameworks/types/ofRectangle.h:
+
+/home/pixel/OF/libs/glm/include/glm/vec3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp:
+
+/home/pixel/OF/libs/openFrameworks/ofMain.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
+
+/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
+
+/home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/events/ofEvent.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofTimer.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofUtils.h:
+
+/home/pixel/OF/libs/utf8/include/utf8.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/checked.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/core.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/unchecked.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h:
 
 /home/pixel/OF/libs/openFrameworks/utils/ofThread.h:
 
@@ -821,34 +918,6 @@ obj/linux64/Release/src/ofApp.o: \
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/vec3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp:
-
-/home/pixel/OF/libs/openFrameworks/types/ofRectangle.h:
 
 /home/pixel/OF/libs/openFrameworks/types/ofColor.h:
 
@@ -1238,8 +1307,6 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/OF/libs/openFrameworks/app/ofAppRunner.h:
 
-/home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h:
-
 /home/pixel/OF/libs/openFrameworks/app/ofMainLoop.h:
 
 /home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h:
@@ -1301,10 +1368,6 @@ obj/linux64/Release/src/ofApp.o: \
 /home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h:
 
 /home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h:
-
-/home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h:
-
-/home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h:
 
 /home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h:
 
@@ -1848,60 +1911,6 @@ obj/linux64/Release/src/ofApp.o: \
 
 /usr/local/include/opencv4/opencv2/opencv.hpp:
 
-/usr/local/include/opencv4/opencv2/opencv_modules.hpp:
-
-/usr/local/include/opencv4/opencv2/core.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvdef.h:
-
-/usr/local/include/opencv4/opencv2/core/version.hpp:
-
-/usr/local/include/opencv4/opencv2/core/hal/interface.h:
-
-/usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
-
-/usr/local/include/opencv4/opencv2/core/base.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvstd.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
-
-/usr/local/include/opencv4/opencv2/core/neon_utils.hpp:
-
-/usr/local/include/opencv4/opencv2/core/vsx_utils.hpp:
-
-/usr/local/include/opencv4/opencv2/core/check.hpp:
-
-/usr/local/include/opencv4/opencv2/core/traits.hpp:
-
-/usr/local/include/opencv4/opencv2/core/matx.hpp:
-
-/usr/local/include/opencv4/opencv2/core/saturate.hpp:
-
-/usr/local/include/opencv4/opencv2/core/fast_math.hpp:
-
-/usr/local/include/opencv4/opencv2/core/types.hpp:
-
-/usr/local/include/opencv4/opencv2/core/mat.hpp:
-
-/usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
-
-/usr/local/include/opencv4/opencv2/core/mat.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/core/persistence.hpp:
-
-/usr/local/include/opencv4/opencv2/core/operations.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/core/utility.hpp:
-
-/usr/local/include/opencv4/opencv2/core/optim.hpp:
-
-/usr/local/include/opencv4/opencv2/core/ovx.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvdef.h:
-
 /usr/local/include/opencv4/opencv2/calib3d.hpp:
 
 /usr/local/include/opencv4/opencv2/features2d.hpp:
@@ -1991,12 +2000,6 @@ obj/linux64/Release/src/ofApp.o: \
 /usr/local/include/opencv4/opencv2/flann/timer.h:
 
 /usr/local/include/opencv4/opencv2/flann/sampling.h:
-
-/usr/local/include/opencv4/opencv2/highgui.hpp:
-
-/usr/local/include/opencv4/opencv2/imgcodecs.hpp:
-
-/usr/local/include/opencv4/opencv2/videoio.hpp:
 
 /usr/local/include/opencv4/opencv2/imgproc.hpp:
 
@@ -2130,4 +2133,10 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/Desktop/3_Simulation/SimAnaPix/src/GuiApp.h:
 
-/home/pixel/Desktop/3_Simulation/SimAnaPix/src/radarApp.hpp:
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/ImgPreview.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/PreviewRect.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/CorpusInspektor.hpp:
+
+/home/pixel/Desktop/3_Simulation/SimAnaPix/src/BeamerApp.hpp:
